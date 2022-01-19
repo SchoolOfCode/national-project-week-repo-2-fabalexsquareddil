@@ -16,11 +16,11 @@ export async function getDay(week_day) {
 
 // For PATCH request
 export async function updateTopicsByWeekDay(weekDay, updates) {
-	console.log('called updateWeekDay');
 	const data = await query(
 		`UPDATE bc_tracker SET topics=$1 WHERE week_day = '${weekDay}' RETURNING *;`,
 		[updates]
 	);
+	return data;
 
 	// topics.findIndex(function (topics) {
 	//   return topics.id === id;

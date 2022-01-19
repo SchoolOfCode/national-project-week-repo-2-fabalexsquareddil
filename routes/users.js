@@ -16,17 +16,12 @@ router.get("/", async function (req, res, next) {
 });
 
 //Get individual day's data
-router.get("/:id", async function(req, res, next){
+router.get("/:id", async function (req, res, next) {
   const data = await getDayById(req.params.id);
   res.json({
     message: "This is all the data for" + req.params.id,
     payload: data,
   });
 });
-
-
-
-
-
 
 export default router;

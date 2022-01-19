@@ -1,4 +1,5 @@
 import express from "express";
+import res from "express/lib/response";
 const router = express.Router();
 import { getAllDays, getDayById } from "../models/index.js";
 
@@ -25,5 +26,11 @@ router.get("/:id", async function (req, res, next) {
 });
 
 
-
+router.patch("/topics", async function (req, res, next) {
+  const data = await updateTopicsByID(req.params.topic);
+  res.json({
+    message: "This returns the updated data" + req.params.topic,
+    payload: data,
+  }); 
+});
 export default router;

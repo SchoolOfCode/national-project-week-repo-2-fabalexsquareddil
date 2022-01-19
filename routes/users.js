@@ -1,36 +1,38 @@
-import express from "express";
-import res from "express/lib/response";
+import express from 'express';
 const router = express.Router();
-import { getAllDays, getDayById } from "../models/index.js";
+import { getAllDays, getDay, updateTopicsByWeekDay } from '../models/index.js';
 
 // router.get('/', (req, res)=>{
 //   res.send("Welcome to your server")
 //   })
 
 // Get all days returned
-router.get("/", async function (req, res, next) {
-  const data = await getAllDays();
-  res.json({
-    message: "We now have some information to give you",
-    payload: data,
-  });
+router.get('/', async function (req, res, next) {
+	const data = await getAllDays();
+	res.json({
+		message: 'We now have some information to give you',
+		payload: data,
+	});
 });
 
 //Get individual day's data
-router.get("/:id", async function (req, res, next) {
-  const data = await getDayById(req.params.id);
-  res.json({
-    message: "This is all the data for" + req.params.id,
-    payload: data,
-  });
+router.get('/:week_day', async function (req, res, next) {
+	const data = await getDay(req.params.week_day);
+	res.json({
+		message: 'This is all the data for ' + req.params.week_day,
+		payload: data,
+	});
 });
 
-
-router.patch("/topics", async function (req, res, next) {
-  const data = await updateTopicsByID(req.params.topic);
-  res.json({
-    message: "This returns the updated data" + req.params.topic,
-    payload: data,
-  }); 
+router.patch('/:weekDay', async function (req, res, next) {
+	const bodyData = JSON.stringify([
+		{ topic: 'fdshfajksdfhaksd', completed: 'fdsajkfhadkshfkasdf' },
+	]);
+	console.log(bodyData);
+	const data = await updateTopicsByWeekDay(req.params.weekDay, bodyData);
+	res.json({
+		message: 'This returns the updated data' + req.params.weekDay,
+		payload: data,
+	});
 });
 export default router;

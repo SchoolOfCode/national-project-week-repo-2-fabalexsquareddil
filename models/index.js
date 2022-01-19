@@ -6,9 +6,10 @@ export async function getAllDays() {
 }
 
 export async function getDayById(id) {
-  const data = await query(`SELECT * FROM bc_tracker WHERE id = '1'`);
+  const data = await query(`SELECT * FROM bc_tracker WHERE id = $1;`,[id]);
   return data.rows;
 }
+
 
 export async function updateTopicsByID(id, updates) {
   //take in the id, take in an updated week/day

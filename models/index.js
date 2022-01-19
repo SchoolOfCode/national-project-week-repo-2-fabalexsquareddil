@@ -11,6 +11,7 @@ export async function getDayById(id) {
   const data = await query(`SELECT * FROM bc_tracker WHERE id = $1;`, [id]);
   return data.rows;
 }
+
 // For PATCH request
 export async function updateTopicsByID(id, updates) {
   const foundIndex = topics.findIndex(function (topics) {
@@ -19,6 +20,7 @@ export async function updateTopicsByID(id, updates) {
   topics[foundIndex] = updates;
   return topics[foundIndex];
 }
+
 
 // export async function updateUserByID(id, updatedUser) {
 //   let userIndex = users.findIndex(function isUseridFound(user){

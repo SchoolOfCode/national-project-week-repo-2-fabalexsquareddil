@@ -2,15 +2,20 @@ import express from "express";
 const router = express.Router();
 import { getAllDays, getDayById } from "../models/index.js";
 
-/* GET users listing. */
+// router.get('/', (req, res)=>{
+//   res.send("Welcome to your server")
+//   })
+
+// Get all days returned
 router.get("/", async function (req, res, next) {
   const data = await getAllDays();
   res.json({
-    message: "I wish we had some information to give you ☹️",
+    message: "We now have some information to give you",
     payload: data,
   });
 });
 
+//Get individual day's data
 router.get("/:id", async function(req, res, next){
   const data = await getDayById(req.params.id);
   res.json({

@@ -7,14 +7,16 @@ export async function getAllDays() {
 }
 
 //For GetById request
-export async function getDayById(id) {
-  const data = await query(`SELECT * FROM bc_tracker WHERE id = $1;`, [id]);
+export async function getDay(week_day) {
+  const data = await query(`SELECT * FROM bc_tracker WHERE week_day = $1;`, [week_day]);
   return data.rows;
 }
 
 // For PATCH request
 export async function updateTopicsByID(id, updates) {
-  const foundIndex = topics.findIndex(function (topics) {
+  const foundIndex = await query(
+  Update tableName SET topic = '{id:1, week: 1, day:1, topic: "hello", completed: false}' WHERE week_day = req.params.week_day)
+  topics.findIndex(function (topics) {
     return topics.id === id;
   });
   topics[foundIndex] = updates;

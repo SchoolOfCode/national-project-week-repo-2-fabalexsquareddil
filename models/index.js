@@ -1,5 +1,32 @@
-import query from "../db/index.js"
+import query from "../db/index.js";
 
 export async function getAllDays() {
-    await query
+  const data = await query("SELECT * FROM bc_tracker");
+  return data.rows;
 }
+
+export async function getDayById(id) {
+  const data = await query(`SELECT * FROM bc_tracker WHERE id = '1'`);
+  return data.rows;
+}
+
+export async function updateTopicsByID(id, updates) {
+  //take in the id, take in an updated week/day
+  //find the week/day with the id matching what we were given.
+  //replace that week/day with the updates
+  //return new week/day
+  const foundIndex = topics.findIndex(function (topics) {
+    return topics.id === id;
+  });
+  topics[foundIndex] = updates;
+  return topics[foundIndex];
+}
+
+
+
+
+
+
+
+
+

@@ -2,13 +2,18 @@ import express from "express";
 import path from "path";
 
 import __dirname from "./dirname.js";
-import cookieParser from "cookie-parser";
 import cors from "cors";
 import logger from "morgan";
 
 import usersRouter from "./routes/users.js";
 
 const app = express();
+
+
+
+// app.get('/', (req, res)=>{
+//   res.send("Welcome to your server")
+//   })
 
 app.use(logger("dev"));
 app.use(cors());

@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0"
+// process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0"
 /**
  * Module dependencies.
  */
@@ -15,7 +15,7 @@ const debug = debugLib("national-project-week-fabalexsquareddil:server");
  * Get port from environment and store in Express.
  */
 
-const port = normalizePort(process.env.PORT || "5432");
+const port = normalizePort(process.env.PORT || "3001");
 app.set("port", port);
 
 /**
@@ -32,6 +32,10 @@ server.listen(port);
 server.on("error", onError);
 server.on("listening", onListening);
 
+//Console log to show server running
+// app.listen(port, ()=>{
+// console.log(`Server is running on port ${port}`)
+// })
 /**
  * Normalize a port into a number, string, or false.
  */

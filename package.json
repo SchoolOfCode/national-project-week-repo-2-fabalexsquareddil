@@ -4,7 +4,7 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "testscript": "nodemon -r dotenv/config ./bin/www.js", 
+    "testscript": "nodemon -r dotenv/config ./bin/www.js",
     "start": "node -r dotenv/config ./bin/www.js",
     "dbcreatetable": "node -r dotenv/config ./db/Scripts/createdbtable.js",
     "dbpopulatetable": "node -r dotenv/config ./db/Scripts/populatedbtable.js"

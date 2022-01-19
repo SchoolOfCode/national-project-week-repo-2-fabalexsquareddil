@@ -24,10 +24,10 @@ export async function updateTopicsByID(id, updates) {
 }
 
 
-
-
-
-
-
-
+export async function updateUserByID(id, updatedUser) {
+  let userIndex = users.findIndex(function isUseridFound(user){
+    return user.id === id;
+  })
+  return users[userIndex] = updatedUser;
+}
 

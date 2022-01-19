@@ -1,0 +1,12 @@
+.sidebar-submenu {
+	margin-left: 30px;
+	list-style-type: none;
+	margin-bottom: 10px;
+}
+
+.sidebar-submenu li {
+	cursor: pointer;
+}
+.sidebar-submenu li:not(:last-of-type) {
+	margin-bottom: 10px;
+}

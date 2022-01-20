@@ -29,9 +29,8 @@ router.get('/:week_day', async function (req, res, next) {
 });
 
 router.patch('/:weekDay', async function (req, res, next) {
-	console.log(req.body);
 	const data = await updateTopicsByWeekDay(req.params.weekDay, req.body);
-	console.log('fdsafadsfads');
+
 	res.json({
 		message: 'This returns the updated data' + req.params.weekDay,
 		payload: { data: data, body: req.body },

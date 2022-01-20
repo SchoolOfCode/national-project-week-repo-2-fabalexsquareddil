@@ -28,7 +28,7 @@ router.patch('/:weekDay', async function (req, res, next) {
 	const data = await updateTopicsByWeekDay(req.params.weekDay, req.body);
 	res.json({
 		message: 'This returns the updated data' + req.params.weekDay,
-		payload: { data, bodyData },
+		payload: { data: data, body: req.body },
 	});
 });
 export default router;

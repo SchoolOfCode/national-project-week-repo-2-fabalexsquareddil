@@ -18,6 +18,7 @@ router.get('/', async function (req, res, next) {
 //Get individual day's data
 router.get('/:week_day', async function (req, res, next) {
 	const data = await getDay(req.params.week_day);
+	data[0].topics = JSON.parse(data[0].topics);
 	res.json({
 		message: 'This is all the data for ' + req.params.week_day,
 		payload: data,
@@ -25,7 +26,9 @@ router.get('/:week_day', async function (req, res, next) {
 });
 
 router.patch('/:weekDay', async function (req, res, next) {
+	console.log(req.body);
 	const data = await updateTopicsByWeekDay(req.params.weekDay, req.body);
+	console.log('fdsafadsfads');
 	res.json({
 		message: 'This returns the updated data' + req.params.weekDay,
 		payload: { data: data, body: req.body },

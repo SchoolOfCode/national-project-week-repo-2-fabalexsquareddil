@@ -18,7 +18,10 @@ router.get('/', async function (req, res, next) {
 //Get individual day's data
 router.get('/:week_day', async function (req, res, next) {
 	const data = await getDay(req.params.week_day);
-	data[0].topics = JSON.parse(data[0].topics);
+	if (data[0].topics) {
+		data[0].topics = JSON.parse(data[0].topics);
+	}
+
 	res.json({
 		message: 'This is all the data for ' + req.params.week_day,
 		payload: data,

@@ -22,17 +22,11 @@ export async function updateTopicsByWeekDay(weekDay, updates) {
 		rowMode: 'array',
 	};
 	const data = await query(queryString);
-
-	// topics.findIndex(function (topics) {
-	//   return topics.id === id;
-	// });
-	// topics[foundIndex] = updates;
-	// return topics[foundIndex];
 }
 
-// export async function updateUserByID(id, updatedUser) {
-//   let userIndex = users.findIndex(function isUseridFound(user){
-//     return user.id === id;
-//   })
-//   return users[userIndex] = updatedUser;
-// }
+export async function getWeeklyTopics(week) {
+	const data = await query(
+		`SELECT * FROM bc_tracker WHERE week_day like 'w${week}d%';`
+	);
+	return data.rows;
+}

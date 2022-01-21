@@ -1,6 +1,11 @@
 import express from 'express';
 const router = express.Router();
-import { getAllDays, getDay, updateTopicsByWeekDay } from '../models/index.js';
+import {
+	getAllDays,
+	getDay,
+	updateTopicsByWeekDay,
+	getWeeklyTopics,
+} from '../models/index.js';
 
 // router.get('/', (req, res)=>{
 //   res.send("Welcome to your server")
@@ -24,6 +29,15 @@ router.get('/:week_day', async function (req, res, next) {
 
 	res.json({
 		message: 'This is all the data for ' + req.params.week_day,
+		payload: data,
+	});
+});
+
+router.get('/weekly/:week', async function (req, res) {
+	const data = await getWeeklyTopics(req.params.week);
+	console.log(data);
+	res.json({
+		message: 'This is all the weekly data for week ' + req.params.week,
 		payload: data,
 	});
 });
